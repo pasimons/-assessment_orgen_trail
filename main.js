@@ -1,51 +1,59 @@
-class traveler {
+class Traveler {
     constructor(name) {
         this.name = name
+        this.food = 1
+        this.isHealthy = true
     }
     hunt() {
         this.food += 2
     }
     eat() {
-        if (this.isHealthy = 1) {
-            return false
+        if (this.food > 0) {
+            this.food -= 1
         } else {
-            return true
+            this.isHealthy = false
         }
     }
 }
 
 
-class NewWagon {
+class Wagon {
     constructor(capacity) {
-        this.space = capacity
+        this.capacity = capacity
+        this.passengers = []
     }
+
+
+
+    getAvailableSeatCount() {
+        return this.capacity - this.passengers.length
+
+    }
+
+
+    join(traveler) {
+
+        if (this.getAvailableSeatCount() > 0) {
+            this.passengers.push(traveler)
+        }
+
+    }
+
+    shouldQuarantine() {
+        const quarantine = this.passengers.some(function(passenger){
+           return  passenger.isHealthy === false
+
+        })
+return quarantine
+
+    }
+
+    totalFood() { 
+        const food = this.passengers.reduce(function(sum,passenger){
+            return sum + passenger.food 
+          }, 0);
+          return food
+    }
+
+
 }
-
-
-
-let passengers = []
-getAvailableSeatCount() {
-    for (let index = 0; index < 5; index--) {
-return getAvailableSeatCount
-    }
-    
-
-
-    join(traveler){
-        if (this.space === 0){
-            return false
-        }else{
-return true
-        }
-    }
-
-    shouldQuarantine(){
-        if(this.helath ===0 ){
-            return helathy
-        }else{
-            return sick
-        }
-    }
-    totalFood(){
-
-    }
